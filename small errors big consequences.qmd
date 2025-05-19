@@ -1,0 +1,297 @@
+|  |
+|----|
+| title: "Small Errors, Big Consequences: Lessons from Data Mismanagement in Business" |
+| author: "Alireza Toutounchi" |
+| date: "`(05/11/2025)`" |
+| output: html_document |
+
+\`\`\`{r setup, include=FALSE} knitr::opts_chunk\$set(echo = TRUE) library(reticulate)
+
+#Introduction
+
+In today’s data-driven world, even a small data error can lead to serious consequences. This paper explores the concept of “Small Errors, Big Consequences” through real-world examples, including a personal case involving cancer detection and treatment technology.
+
+Case Study: Cancer Cell Detection Program Some times ago I tried to write a program which is related to the detection and prediction of breast cancer cells. The program worked in a way that could recognized cancer cells from healthy cells (malignant cells and benign cells) based on color or black-and-white imaging (color spectrum) of the breast and was designed to locate the origin. The program was connecting to a robot, which would identify the coordinates of cancer cells using 3D imaging and then begin laser therapy.
+
+Why use a robot? To minimize human error. This method is typically effective for eliminating very small, early-stage tumors (Laser Ablation). The robot was supposed to irradiate the area around each malignant cell with a margin of error between 1 to 7 nanometers. However, the programming encountered some flaws and failed to accurately identify malignant cells based on color spectrum analysis. As a result, instead of targeting the cancerous cells, the laser mistakenly hit surrounding healthy cells, causing unintended burns. This was a small but clear example of "Small Errors, Big Consequences."
+
+# 
+
+# #Some Codes that showing the plot in 2D and 3D :
+
+# 
+
+# 2D Visualization with Python (PCA on Breast Cancer Dataset) :
+
+# from sklearn.datasets import load_breast_cancer
+
+# import pandas as pd
+
+# import matplotlib.pyplot as plt
+
+# from sklearn.decomposition import PCA
+
+# from sklearn.preprocessing import StandardScaler
+
+# import matplotlib
+
+# matplotlib.use('Agg') \# Use non-interactive backend for knit
+
+# 
+
+# \# Load dataset
+
+# data = load_breast_cancer()
+
+# df = pd.DataFrame(data.data, columns=data.feature_names)
+
+# 
+
+# \# Scale data
+
+# scaler = StandardScaler()
+
+# scaled_data = scaler.fit_transform(df)
+
+# 
+
+# \# Apply PCA
+
+# pca = PCA(n_components=2)
+
+# pca_result = pca.fit_transform(scaled_data)
+
+# 
+
+# \# Plot
+
+# plt.figure(figsize=(10, 8))
+
+# plt.scatter(pca_result\[:, 0\], pca_result\[:, 1\], c=data.target, cmap='plasma')
+
+# plt.xlabel('Principal Component 1')
+
+# plt.ylabel('Principal Component 2')
+
+# plt.title('PCA of Breast Cancer Dataset')
+
+# plt.savefig('pca_plot.png') \# Save figure to file
+
+# 
+
+# knitr::include_graphics("pca_plot.png")
+
+# 
+
+# 
+
+# 3D Visualization with Python (PCA on Breast Cancer Dataset) :
+
+# 
+
+# import sklearn
+
+# from sklearn.datasets import load_breast_cancer
+
+# import pandas as pd
+
+# import matplotlib.pyplot as plt
+
+# from sklearn.decomposition import PCA
+
+# from sklearn.datasets import load_breast_cancer
+
+# from sklearn.preprocessing import StandardScaler
+
+# data = load_breast_cancer()
+
+# df = pd.DataFrame(data.data, columns = data.feature_names)
+
+# print(df.iloc\[:, 0:6\].head(6))
+
+# 
+
+# scaler = StandardScaler()
+
+# scaler.fit(df)
+
+# Bcancer_scaled = scaler.transform(df)
+
+# pca = PCA(n_components= 3)
+
+# pca.fit(Bcancer_scaled)
+
+# pca_bcancer = pca.transform(Bcancer_scaled)
+
+# 
+
+# Xax = pca_bcancer\[:,0\]
+
+# Yax = pca_bcancer\[:,1\]
+
+# Zax = pca_bcancer\[:,2\]
+
+# 
+
+# cdict = {0: 'red', 1:'yellow'}
+
+# label = {0: 'Malignant', 1:'Bening'}
+
+# y = data.target
+
+# 
+
+# fig = plt.figure(figsize = (14,9))
+
+# ax = fig.add_subplot(111, projection= '3d')
+
+# import numpy as np
+
+# 
+
+# \# \[0,1,1,0\]
+
+# 
+
+# \# 0
+
+# \# \[0,3\]
+
+# \# 1
+
+# \# \[1,2\]
+
+# 
+
+# for l in np.unique(y):
+
+# ix = np.where(y==l)
+
+# ax.scatter(Xax\[ix\],
+
+# Yax\[ix\],
+
+# Zax\[ix\],
+
+# c = cdict\[l\],
+
+# s = 60,
+
+# label = label\[l\])
+
+# 
+
+# ax.view_init(400,400)
+
+# plt.show()
+
+---
+title: "My Title"
+shorttitle: "Short Title in Running Header"
+author:
+  - name: Jane Doe
+    corresponding: true
+    orcid: 0000-0000-0000-0001
+    email: janedoe@generic.edu
+    affiliations:
+      - name: Generic University
+        department: Department of Scholarly Studies
+        address: 1234 Capital St.
+        city: New York
+        region: NY
+        country: USA
+        postal-code: 12084-1234
+author-note:
+  status-changes: 
+    affiliation-change: ~
+    deceased: ~
+  disclosures:
+    study-registration: ~
+    data-sharing: ~
+    related-report: ~
+    conflict-of-interest: ~
+    financial-support: ~
+    gratitude: ~
+    authorship-agreements: ~
+abstract: "This document is a template."
+keywords: [Keyword 1, Keyword 2, Keyword 3]
+bibliography: bibliography.bib
+format:
+  apaquarto-docx: default
+  apaquarto-html: default
+  apaquarto-typst: default
+  apaquarto-pdf:
+    documentmode: man
+---
+
+<!-- The introduction should not have a level-1 heading such as Introduction. -->
+
+This is my first paragraph. Any section headings in the introduction should be in levels 2--5.
+
+# Method
+
+## Participants
+
+## Measures
+
+## Procedure
+
+# Results
+
+# Discussion
+
+## Limitations and Future Directions
+
+## Conclusion
+
+# References
+
+<!-- References will auto-populate in the refs div below -->
+
+::: {#refs}
+:::
+
+# This Section Is an Appendix {#apx-a}
+
+# Another Appendix {#apx-b}
+
+::: {.callout-tip appearance="default" title="Affidavit" icon="false"}
+I hereby affirm that this submitted paper was authored unaided and solely by me. Additionally, no other sources than those in the reference list were used. Parts of this paper, including tables and figures, that have been taken either verbatim or analogously from other works have in each case been properly cited with regard to their origin and authorship. This paper either in parts or in its entirety, be it in the same or similar form, has not been submitted to any other examination board and has not been published.
+
+I acknowledge that the university may use plagiarism detection software to check my thesis. I agree to cooperate with any investigation of suspected plagiarism and to provide any additional information or evidence requested by the university.
+
+Checklist:
+
+-   [ ] The handout contains 3-5 pages of text.
+-   [ ] The submission contains the Quarto file of the handout.
+-   [ ] The submission contains the Quarto file of the presentation.
+-   [ ] The submission contains the HTML file of the handout.
+-   [ ] The submission contains the HTML file of the presentation.
+-   [ ] The submission contains the PDF file of the handout.
+-   [ ] The submission contains the PDF file of the presentation.
+-   [ ] The title page of the presentation and the handout contain personal details (name, email, matriculation number).
+-   [ ] The handout contains a abstract.
+-   [ ] The presentation and the handout contain a bibliography, created using BibTeX with APA citation style.
+-   [ ] Either the handout or the presentation contains R code that proof the expertise in coding.
+-   [ ] The handout includes an introduction to guide the reader and a conclusion summarizing the work and discussing potential further investigations and readings, respectively.
+-   [ ] All significant resources used in the report and R code development.
+-   [ ] The filled out Affidavit.
+-   [ ] A concise description of the successful use of Git and GitHub, as detailed here: <https://github.com/hubchev/make_a_pull_request>.
+-   [ ] The link to the presentation and the handout published on GitHub.
+
+\[Your Name,\] \[Date,\] \[Place\]
+:::
+
+# General tips
+
+I refrain from specific advice on good writing, structuring your work, or adhering to academic rules and conventions. Therefore, I recommend reading @Huber2024My and the literature cited therein.
+
+Since this is an academic presentation and work, respectively, please choose your sources carefully and ensure that you cite them appropriately.
+
+If anything is unclear, please let me know as soon as possible. It is your responsibility to be well prepared on the day of your presentation. If you encounter any problems, let me know immediately and I will do my best to help you. However, please understand that I may have limited availability in the days or weeks leading up to your presentation. Prioritise the essential tasks that are technically complex or where something is likely to go wrong.
+
+# References
+
+<div>
+
+</div>

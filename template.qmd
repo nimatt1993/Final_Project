@@ -1,5 +1,5 @@
 ---
-title: "My Title"
+title: ""
 shorttitle: "Short Title in Running Header"
 author:
   - name: Jane Doe
