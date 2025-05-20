@@ -1,0 +1,73 @@
+---
+---
+title: "Small Errors, Big Consequences: Lessons from Data Mismanagement in Business"
+shorttitle: "Small Errors, Big Consequences"
+author:
+  - name: Alireza Toutounchi
+    corresponding: true
+    orcid: 0000-0000-0000-0001
+    email: toutounchi.alireza@stud.hs-fresenius.de
+    url: 
+    affiliations:
+      - name: "Hochschule Fresenius - University of Applied Science"
+        group: "International Management, M.A."
+        department: 
+        address: 
+        city: Koln
+        region: 
+        country: 
+        postal-code: 
+author-note:
+  status-changes: 
+    affiliation-change: ~
+    deceased: ~
+  disclosures:
+    study-registration: ~
+    data-sharing: ~
+    related-report: ~
+    conflict-of-interest: ~
+    financial-support: ~
+    gratitude: ~
+    authorship-agreements: ~
+abstract: "This document is a template."
+keywords: [Data, Errors, Consequences, Mismanagement, Analysis, ]
+bibliography: bibliography.bib
+format:
+  apaquarto-html: default
+  apaquarto-typst: default
+  apaquarto-pdf:
+    documentmode: man
+---
+
+
+
+
+
+
+# Affadative
+
+I hereby affirm that this submitted paper was authored unaided and solely by me. Additionally, no other sources than those in the reference list were used. Parts of this paper, including tables and figures, that have been taken either verbatim or analogously from other works have in each case been properly cited with regard to their origin and authorship. This paper either in parts or in its entirety, be it in the same or similar form, has not been submitted to any other examination board and has not been published.
+
+I acknowledge that the university may use plagiarism detection software to check my thesis. I agree to cooperate with any investigation of suspected plagiarism and to provide any additional information or evidence requested by the university.
+
+Checklist:
+
+-   [ ] The handout contains 3-5 pages of text.
+-   [ ] The submission contains the Quarto file of the handout.
+-   [ ] The submission contains the Quarto file of the presentation.
+-   [ ] The submission contains the HTML file of the handout.
+-   [ ] The submission contains the HTML file of the presentation.
+-   [ ] The submission contains the PDF file of the handout.
+-   [ ] The submission contains the PDF file of the presentation.
+-   [ ] The title page of the presentation and the handout contain personal details (name, email, matriculation number).
+-   [ ] The handout contains a abstract.
+-   [ ] The presentation and the handout contain a bibliography, created using BibTeX with APA citation style.
+-   [ ] Either the handout or the presentation contains R code that proof the expertise in coding.
+-   [ ] The handout includes an introduction to guide the reader and a conclusion summarizing the work and discussing potential further investigations and readings, respectively.
+-   [ ] All significant resources used in the report and R code development.
+-   [ ] The filled out Affidavit.
+-   [ ] A concise description of the successful use of Git and GitHub, as detailed here: <https://github.com/hubchev/make_a_pull_request>.
+-   [ ] The link to the presentation and the handout published on GitHub.
+
+\[Alireza Toutounchi,\] \[06/18/2025,\] \[Koln\]
+:::
