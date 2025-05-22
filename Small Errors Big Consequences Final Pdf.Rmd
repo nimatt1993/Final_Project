@@ -5,11 +5,12 @@ shorttitle: "Small Errors, Big Consequences"
 # It is nice to specify everyone's orcid, if possible.
 # There can be only one corresponding author, but declaring one is optional.
 author:
-  - name: Alireza Toutounchi (Matriculation:400889526)
+  - name: Alireza Toutounchi
     corresponding: true
     email: toutounchi.alireza@stud.hs-fresenius.de
     url:
     affiliations:
+      - id: "400889526"
         name: "Hochschule Fresenius - University of Applied Science"
         group: "International Management, M.A."
         department:
@@ -92,13 +93,6 @@ format:
     keep-tex: true
 echo: true
 ---
-
-
-
-
-
-
-
 
 
 # Introduction 
@@ -633,8 +627,6 @@ plot_ly(pca_data,
 ```
 
 ![Fig1.Errors Lazering](mouse.png)
-
-
 
 # Affadative
 

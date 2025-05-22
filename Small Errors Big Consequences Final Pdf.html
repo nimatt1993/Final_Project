@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" xml:lang="en-US"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.23">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alireza Toutounchi">
+<meta name="keywords" content="Data, Errors, Consequences, Mismanagement, Analysis">
+<meta name="description" content="SMALL ERRORS, BIG CONSEQUENCES">
+
+<title>Small Errors, Big Consequences: Lessons from Data Mismanagement in Business</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Small Errors Big Consequences Final Pdf_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Small Errors Big Consequences Final Pdf_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Small Errors Big Consequences Final Pdf_files/libs/quarto-html/popper.min.js"></script>
+<script src="Small Errors Big Consequences Final Pdf_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="Small Errors Big Consequences Final Pdf_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Small Errors Big Consequences Final Pdf_files/libs/quarto-html/quarto-syntax-highlighting-226bd0f977fa82dfae4534cac220d79a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Small Errors Big Consequences Final Pdf_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Small Errors Big Consequences Final Pdf_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Small Errors Big Consequences Final Pdf_files/libs/bootstrap/bootstrap-19b6a0d198fed111047a26c2a7f710cb.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="Small Errors Big Consequences Final Pdf_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/viz-1.8.2/viz.js"></script>
+
+<link href="Small Errors Big Consequences Final Pdf_files/libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/grViz-binding-1.0.11/grViz.js"></script>
+
+<link href="Small Errors Big Consequences Final Pdf_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/datatables-binding-0.33/datatables.js"></script>
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+
+<link href="Small Errors Big Consequences Final Pdf_files/libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+
+<link href="Small Errors Big Consequences Final Pdf_files/libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+
+<link href="Small Errors Big Consequences Final Pdf_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/plotly-binding-4.10.4/plotly.js"></script>
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/typedarray-0.1/typedarray.min.js"></script>
+
+<link href="Small Errors Big Consequences Final Pdf_files/libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="Small Errors Big Consequences Final Pdf_files/libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+
+<link rel="stylesheet" href="_extensions/apaquarto/apa.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#good-information" id="toc-good-information" class="nav-link" data-scroll-target="#good-information">Good Information</a></li>
+  <li><a href="#bad-information" id="toc-bad-information" class="nav-link" data-scroll-target="#bad-information">Bad Information</a></li>
+  <li><a href="#the-topic-of-discussion-here-is-bad-information-so-i-will-address-this-issue-and-examine-its-implications-and-delve-into-it-a-little-deeper." id="toc-the-topic-of-discussion-here-is-bad-information-so-i-will-address-this-issue-and-examine-its-implications-and-delve-into-it-a-little-deeper." class="nav-link" data-scroll-target="#the-topic-of-discussion-here-is-bad-information-so-i-will-address-this-issue-and-examine-its-implications-and-delve-into-it-a-little-deeper.">The topic of discussion here is bad information, so I will address this issue and examine its implications and delve into it a little deeper.</a></li>
+  <li><a href="#common-consequences" id="toc-common-consequences" class="nav-link" data-scroll-target="#common-consequences"><strong>Common Consequences:</strong></a></li>
+  <li><a href="#data-mismanagement-happens-when-businesses-treat-data-casually-instead-of-strategicallyleading-to-chaos-loss-and-missed-opportunities." id="toc-data-mismanagement-happens-when-businesses-treat-data-casually-instead-of-strategicallyleading-to-chaos-loss-and-missed-opportunities." class="nav-link" data-scroll-target="#data-mismanagement-happens-when-businesses-treat-data-casually-instead-of-strategicallyleading-to-chaos-loss-and-missed-opportunities.">Data mismanagement happens when businesses treat data casually instead of strategically—leading to chaos, loss, and missed opportunities.</a></li>
+  <li><a href="#this-is-a-real-life-example-from-samsung-based-on-data-mismanagement-in-business" id="toc-this-is-a-real-life-example-from-samsung-based-on-data-mismanagement-in-business" class="nav-link" data-scroll-target="#this-is-a-real-life-example-from-samsung-based-on-data-mismanagement-in-business">● This is a real-life example from Samsung based on data mismanagement in business:</a></li>
+  </ul></li>
+  <li><a href="#affadative" id="toc-affadative" class="nav-link" data-scroll-target="#affadative">Affadative</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Small Errors Big Consequences Final Pdf.pdf"><i class="bi bi-file-pdf"></i>Typst (apaquarto)</a></li><li><a href="Small-Errors-Big-Consequences-Final-Pdf.pdf"><i class="bi bi-file-pdf"></i>PDF (apaquarto)</a></li></ul></div></nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content" id="quarto-document-content">
+
+
+
+
+<br>
+
+<br>
+
+<section id="title" class="level1 title unnumbered unlisted">
+<h1 class="title unnumbered unlisted">Small Errors, Big Consequences: Lessons from Data Mismanagement in Business</h1>
+<div class="Author">
+<br>
+
+<p>Alireza Toutounchi</p>
+<p>International Management, M.A., Hochschule Fresenius - University of Applied Science</p>
+</div>
+<br>
+
+<br>
+
+</section>
+<section id="author-note" class="level1 unnumbered unlisted AuthorNote">
+<h1 class="unnumbered unlisted AuthorNote">Author Note</h1>
+<p>The authors have no conflicts of interest to disclose.</p>
+<p>Correspondence concerning this article should be addressed to Alireza Toutounchi, International Management, M.A., Hochschule Fresenius - University of Applied Science, Koln, Email: <a href="mailto:toutounchi.alireza@stud.hs-fresenius.de">toutounchi.alireza@stud.hs-fresenius.de</a></p>
+<br>
+</section>
+<section id="abstract" class="level1 unnumbered unlisted AuthorNote">
+<h1 class="unnumbered unlisted AuthorNote">Abstract</h1>
+<div class="AbstractFirstParagraph">
+<p>In the era of data-driven decision-making, even minor errors in data management can lead to major financial, operational, and reputational consequences for businesses. This paper explores real-world cases where inaccurate, incomplete, or poorly governed data resulted in substantial setbacks for global organizations. Through an analysis of incidents at companies such as Equifax, Unity Technologies, Samsung, and Knight Capital, we highlight how flawed data inputs, system failures, and human errors have led to multimillion-dollar losses, regulatory penalties, and public mistrust. The study also presents a simulation comparing true and faulty forecasts in business reporting to illustrate how data errors can distort insights and decisions. Finally, key lessons are drawn, emphasizing the critical importance of robust data governance, validation systems, and proactive error detection in maintaining business integrity and resilience.</p>
+</div>
+<p><em>Keywords</em>: Data, Errors, Consequences, Mismanagement, Analysis</p>
+<br>
+</section>
+<section id="firstheader" class="level1 title unnumbered unlisted">
+<h1 class="title unnumbered unlisted">Small Errors, Big Consequences: Lessons from Data Mismanagement in Business</h1>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p><strong>What is Data?</strong></p>
+<p>The term “data” refers to raw facts, figures, or information collected for reference, analysis, or processing. Data can exist in many forms — numbers, text, images, audio, video, or symbols — and it has no meaning on its own until it is interpreted.</p>
+<p><strong>Types of Data:</strong></p>
+<ol type="1">
+<li>Quantitative Data (Numerical)</li>
+</ol>
+<p>● Discrete: Countable (e.g., number of students).</p>
+<p>● Continuous: Measurable (e.g., height, weight).</p>
+<ol start="2" type="1">
+<li>Qualitative Data (Categorical)</li>
+</ol>
+<p>●Nominal: Categories with no order (e.g., gender, color).</p>
+<p>●Ordinal: Categories with order (e.g., satisfaction level: low, medium, high).</p>
+<p><strong>Forms of Data:</strong> • Structured (organized in tables like Excel or databases) • Unstructured (like emails, social media, videos) • Semi-structured (like JSON or XML files)</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: right;">ID</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Department</th>
+<th style="text-align: left;">Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">102</td>
+<td style="text-align: left;">Jane</td>
+<td style="text-align: left;">HR</td>
+<td style="text-align: left;">€3,500</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>This becomes information when we interpret it — for example, understanding that Jane works in HR and earns €3,500. The most basic division of information is good and bad information. This distinction is crucial in fields like data science, business intelligence, decision-making, and information systems.</p>
+<section id="good-information" class="level2">
+<h2 data-anchor-id="good-information">Good Information</h2>
+<p>Good information is accurate, timely, relevant, complete, and reliable. It enhances decision-making and contributes to achieving goals.</p>
+<ol type="1">
+<li>Accuracy – Free from error.</li>
+<li>Timeliness – Up to date and delivered on time.</li>
+<li>Relevance – Applicable to the problem or decision at hand.</li>
+<li>Completeness – Covers all important facts.</li>
+<li>Reliability – Trustworthy and consistent.</li>
+</ol>
+<p>Example: A dashboard showing real-time sales performance across regions using verified data sources.</p>
+</section>
+<section id="bad-information" class="level2">
+<h2 data-anchor-id="bad-information">Bad Information</h2>
+<p>Bad information is inaccurate, outdated, irrelevant, incomplete, or misleading. It leads to poor decisions and potentially serious consequences. 1. Misinformation – False or misleading information shared without harmful intent. 2. Disinformation – Deliberately deceptive information shared with malicious intent. 3. Outdated data – Information that was once correct but no longer reflects the current state.</p>
+<p>Example: Using last year’s market trends to make decisions in a rapidly changing economy without checking current data.</p>
+</section>
+<section id="the-topic-of-discussion-here-is-bad-information-so-i-will-address-this-issue-and-examine-its-implications-and-delve-into-it-a-little-deeper." class="level2">
+<h2 data-anchor-id="the-topic-of-discussion-here-is-bad-information-so-i-will-address-this-issue-and-examine-its-implications-and-delve-into-it-a-little-deeper.">The topic of discussion here is bad information, so I will address this issue and examine its implications and delve into it a little deeper.</h2>
+<p>Bad data can cost you money. It can also damage your reputation, drive good customers away, and negatively affect your entire workforce. Bad data, more often than not, results in bad decisions – and bad decisions can destroy a business. The true costs of bad data are so overwhelming that they are scary. If you do not take data quality seriously, you are at risk of being blindsided by the enormous impact of bad data.</p>
+<p><strong>What is Bad Data?</strong></p>
+<p>Bad data is any data that is not wholly accurate or doesn’t conform to necessary standards. That can include inaccurate data, incomplete data, conflicting data, duplicate data, invalid data, and unsynchronized data.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-cfb0cd4c78113d3bf84c" style="width:100%;height:650px;"></div>
+<script type="application/json" data-for="htmlwidget-cfb0cd4c78113d3bf84c">{"x":{"diagram":"\ndigraph bad_data {\n  graph [layout = dot, rankdir = LR, nodesep = 0.6]\n  node [shape = box, style = filled, color = gray, fillcolor = \"#cccccc\", fontname = Helvetica, fontsize = 12, width=2.8, height=0.6]\n\n  inaccurate     [label = \"Inaccurate data\"]\n  incomplete     [label = \"Incomplete data\"]\n  conflicting    [label = \"Conflicting data\"]\n  duplicate      [label = \"Duplicate data\"]\n  invalid        [label = \"Invalid data\"]\n  unsynchronized [label = \"Unsynchronized data\"]\n\n  edge [style = invis]\n  inaccurate -> incomplete -> conflicting -> duplicate -> invalid -> unsynchronized\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><strong>How bad data can impact your businesses ? </strong></p>
+<p>This is the most important question you should be concerned with to reach the correct answer in terms of proper management and preventing significant damage from the smallest errors. To answer this question, I would say that if the initial errors are recoverable with a small error margin and the project is flexible, it may be possible to prevent the issue with minimal cost and in the shortest possible time. However, if we analyze it on paper, if a project that is already in progress has not been properly analyzed beforehand and its roadmap hasn’t been prepared, even if the error is addressed quickly, the project will still face significant consequences.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="grViz html-widget html-fill-item" id="htmlwidget-28eea3c6e430730db1d2" style="width:100%;height:650px;"></div>
+<script type="application/json" data-for="htmlwidget-28eea3c6e430730db1d2">{"x":{"diagram":"\ndigraph business_data_use {\n  graph [layout = dot, rankdir = LR]\n\n  node [shape = box, style = filled, fontname = Helvetica, fontsize = 12, fillcolor = \"#cccccc\"]\n\n  start [label = \"How does your\\nbusiness use data?\"]\n  \n  decision [label = \"Making\\ndecisions\"]\n  operations [label = \"Managing\\noperations\"]\n  \n  poor [label = \"Poor\\ndecisions\"]\n  missed [label = \"Missed\\nopportunities\"]\n  internal_loss [label = \"Internal loss\\nof trust\"]\n\n  wasted [label = \"Wasted time\\n& money\"]\n  frustrated [label = \"Frustrated\\ncustomers\"]\n  external_loss [label = \"External loss\\nof trust\"]\n  \n  start -> decision\n  start -> operations\n  \n  decision -> poor\n  decision -> missed\n  decision -> internal_loss\n\n  operations -> wasted\n  operations -> frustrated\n  operations -> external_loss\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><strong>How does your business use data?</strong></p>
+<p>It outlines two primary functions of business data use—Making decisions and Managing operations—and illustrates the negative consequences of poor data practices under each.</p>
+<p><strong>1. Making Decisions</strong></p>
+<p>Businesses rely heavily on data to guide strategic, operational, and financial decisions. When data is incomplete, outdated, or incorrect, it leads to:</p>
+<p><strong>• Poor decisions:</strong> Executives may act on flawed insights, leading to failed investments or ineffective campaigns.</p>
+<p><strong>• Missed opportunities:</strong> Without timely or accurate data, organizations may overlook market trends or emerging customer needs.</p>
+<p><strong>• Internal loss of trust:</strong> Employees lose confidence in systems or leadership when data repeatedly proves unreliable.</p>
+<p>Example:</p>
+<p>A retail company might misinterpret sales data due to duplicate entries, leading to overproduction of a poorly performing product.</p>
+<p><strong>2. Managing Operations</strong></p>
+<p>Data also plays a key role in the day-to-day functioning of a business—like inventory control, customer support, and supply chain management.</p>
+<p>When data is mismanaged, it results in:</p>
+<p><strong>• Wasted time &amp; money:</strong> Teams spend hours cleaning, verifying, or reconciling data.</p>
+<p><strong>• Frustrated customers:</strong> Inaccurate customer profiles or slow systems erode user experience.</p>
+<p><strong>• External loss of trust:</strong> Repeated failures caused by bad data can harm a brand’s reputation in the market.</p>
+<p>Example:</p>
+<p>An e-commerce platform using outdated shipping data may send packages to the wrong addresses, frustrating customers and increasing return costs.</p>
+<p><strong>Conclusion:</strong></p>
+<p>Businesses depend on data to inform both decision-making and daily operations. when this data is unreliable, the consequences ripple through every layer of the organization—from strategic planning to customer satisfaction. Mismanagement not only wastes resources but undermines trust both internally and externally. Companies must treat data as a critical asset, investing in quality controls, validation systems, and data governance to mitigate these risks.</p>
+<p><strong>● What is Data Mismanagement in Business?</strong></p>
+<p>Data mismanagement in business refers to the poor handling, organization, protection, or use of data, leading to negative outcomes for operations, strategy, customers, and compliance.</p>
+<p>It includes everything from:</p>
+<ol type="1">
+<li>storing outdated or duplicate records,</li>
+<li>using inaccurate data for decision-making,</li>
+<li>failing to secure sensitive information,</li>
+<li>to lacking proper data governance policies.</li>
+</ol>
+<p><strong>Key Aspects of Data Mismanagement:</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-68c438aba2acceac6546" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-68c438aba2acceac6546">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["Poor data quality","Lack of data governance","Siloed systems","Inadequate security","Untrained personnel"],["Inaccurate, incomplete, or outdated information.","No policies for handling or validating data.","Data is scattered across departments with no central management.","Failure to protect data from breaches or leaks.","Staff input or use data incorrectly due to lack of training."]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Area<\/th>\n      <th>Description<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","ordering":false,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Area","targets":1},{"name":"Description","targets":2}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="common-consequences" class="level2">
+<h2 data-anchor-id="common-consequences"><strong>Common Consequences:</strong></h2>
+<ol type="1">
+<li><p>Financial Losses: Wrong data can lead to flawed decisions and costly errors.</p></li>
+<li><p>Reputation Damage: Loss of customer trust due to data breaches or service failures.</p></li>
+<li><p>Regulatory Fines: Non-compliance with laws like GDPR or HIPAA due to poor data practices.</p></li>
+<li><p>Operational Inefficiencies: Wasted resources due to rework, duplication, or delays.</p></li>
+</ol>
+<p><strong>Data mismanagement happens when a business fails to treat data as a strategic asset—resulting in bad decisions, inefficiency, and a loss of trust.</strong></p>
+<p>Common Situations Where Data Mismanagement Happens:</p>
+<p><strong>1. Lack of Data Governance</strong></p>
+<p>• No clear policies on who owns, accesses, or updates data.</p>
+<p>• No rules for validation, version control, or lifecycle management. <strong>Example:</strong> Multiple departments maintain different versions of the same customer list, leading to inconsistencies.</p>
+<p><strong>2. Poor Data Quality Controls</strong></p>
+<p>• No validation rules during data entry.</p>
+<p>• Outdated, duplicated, or missing information is allowed to persist. <strong>Example:</strong> A typo in a financial spreadsheet leads to misreported revenue figures.</p>
+<p><strong>3. Over-Reliance on Manual Processes</strong></p>
+<p>• Using spreadsheets instead of databases.</p>
+<p>• Lack of automation for cleansing or integration.</p>
+<p><strong>Example:</strong> Public Health England missed over 15,000 COVID-19 cases in 2020 due to Excel row limits.</p>
+<p><strong>4. Siloed Systems and Departments</strong></p>
+<p>• Data is stored in separate tools or teams with little communication.</p>
+<p>• No unified view of customers, sales, or operations.</p>
+<p><strong>Example:</strong> Marketing and sales use different definitions for “qualified leads,” causing confusion and missed opportunities.</p>
+<p><strong>5. Inadequate Staff Training</strong></p>
+<p>• Employees don’t understand how to input or interpret data correctly.</p>
+<p>• Data mishandling occurs due to lack of education or awareness.</p>
+<p><strong>Example:</strong> Call center agents overwrite customer data because they don’t understand the CRM system.</p>
+<p><strong>6. Failure to Monitor and Audit</strong></p>
+<p>• Businesses don’t regularly check their data for integrity, security, or accuracy.</p>
+<p><strong>Result:</strong> Errors accumulate silently until they cause major harm.</p>
+</section>
+<section id="data-mismanagement-happens-when-businesses-treat-data-casually-instead-of-strategicallyleading-to-chaos-loss-and-missed-opportunities." class="level2">
+<h2 data-anchor-id="data-mismanagement-happens-when-businesses-treat-data-casually-instead-of-strategicallyleading-to-chaos-loss-and-missed-opportunities.">Data mismanagement happens when businesses treat data casually instead of strategically—leading to chaos, loss, and missed opportunities.</h2>
+<p>All the consequences of small and large problems in the business field stem from the lack of access to raw and initial data, classified information, data from an incorrect statistical population, and even information from the wrong choice of company or project in the early stages.</p>
+<p>To prevent such occurrences, we must first obtain accurate and classified data from the correct statistical population. After that, it’s time to categorize and prioritize the information and classify it. Finally, accurate and precise data analysis comes into play.</p>
+<p>The final step is predicting the data and observing the initial results of the forecast. This allows you to start making predictions based on accurate and precise data and forecast the most accurate outcome, taking into account human error and the difficulty of project execution.</p>
+<p>This is an example of combining proper management with the use of data analysis, providing the best output as an initial sample to the client.</p>
+<p><strong>Key Lessons from Data Mismanagement in Business</strong></p>
+<p><strong>1. Financial Losses Due to Data Errors</strong></p>
+<p>Inaccurate data can lead to significant financial setbacks. For instance, Unity Technologies experienced a $110 million loss due to incorrect data used in their Audience Pinpoint tool, which affected ad targeting effectiveness.</p>
+<p><strong>2. Reputational Damage and Loss of Trust</strong></p>
+<p>Data breaches or mismanagement can erode customer trust. Equifax’s 2017 data breach exposed sensitive information of 147 million people, leading to a damaged reputation and legal consequences.</p>
+<p><strong>3. Operational Inefficiencies</strong></p>
+<p>Poor data quality can disrupt business operations. Uber faced a $45 million loss due to miscalculations in driver payments, stemming from data inaccuracies.</p>
+<p><strong>4. Regulatory Non-Compliance</strong></p>
+<p>Failure to manage data properly can result in non-compliance with regulations. The Capital Hill Cashgate Scandal in Malawi involved the mismanagement of government funds due to inadequate financial data systems, leading to significant political and financial repercussions.</p>
+<p><strong>5. Strategic Missteps</strong></p>
+<p>Decisions based on flawed data can misguide business strategies. Samsung reportedly lost <strong>$105 billion</strong> due to a data entry error that misrepresented financial forecasts, affecting investor confidence.</p>
+</section>
+<section id="this-is-a-real-life-example-from-samsung-based-on-data-mismanagement-in-business" class="level2">
+<h2 data-anchor-id="this-is-a-real-life-example-from-samsung-based-on-data-mismanagement-in-business">● This is a real-life example from Samsung based on data mismanagement in business:</h2>
+<p><strong>1. Samsung (2016) - Battery overheating on Galaxy Note 7 smartphones</strong></p>
+<p>Samsung faced a significant issue in 2016 with its Galaxy Note 7 smartphones, which were prone to battery overheating and catching fire. This crisis was largely due to poor data management and quality control in the production process. Initially, the company did not properly analyze the data related to battery safety, which led to design flaws in the device. After launching the product, Samsung failed to act quickly enough, relying on faulty data and assumptions about the safety of the phones, causing them to recall millions of units.</p>
+<p>This situation highlights how data mismanagement—whether it’s in the form of faulty testing, incorrect data interpretation, or slow reaction to early warning signs—can lead to major financial losses, reputation damage, and significant customer trust issues. Proper data analysis, accurate forecasting, and quick decision-making could have helped Samsung avoid such a crisis or at least mitigate its effects.</p>
+<p><strong>2.Samsung (2021) – Forecasting Entry Error</strong></p>
+<p>A human data entry error inflated Samsung’s financial forecasts, which misled investors and contributed to a reported $105 billion market value drop.</p>
+<p><strong>Even small manual data errors in critical reports can have billion-dollar consequences.</strong></p>
+<p>Since Samsung (and most companies) do not release official and accurate financial forecasts, data on the damage caused by battery malfunctions, etc., as an open dataset, the actual data is not available.</p>
+<p>Therefore, I am using a simulated and simplified dataset for Samsung’s forecast, which is solely for comparison between true forecasts and incorrect forecasts with the aim of graphically comparing accurate and inaccurate predictions.</p>
+<p>Real analysis should be derived from financial sources, stock reports, or economic news websites (such as Yahoo Finance, Investing.com, or Samsung IR). However, due to the unavailability of real data, I had to create a simulated dataset. Nevertheless, I tried to make the analysis more realistic by extracting some real data on stock or earnings per share <strong>(EPS)</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Small-Errors-Big-Consequences-Final-Pdf_files/figure-html/unnamed-chunk-5-1.svg" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Small-Errors-Big-Consequences-Final-Pdf_files/figure-html/unnamed-chunk-6-1.svg" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>This is a tangible example that I experienced years ago :</strong></p>
+<p>Some times ago I tried to write a program which is related to the detection and prediction of breast cancer cells.</p>
+<p>The program worked in a way that could recognized cancer cells from healthy cells (malignant cells and benign cells) based on color or black-and-white imaging (color spectrum) of the breast and was designed to locate the origin.</p>
+<p>The program was connecting to a robot, which would identify the coordinates of cancer cells using 3D imaging and then begin laser therapy.</p>
+<p><strong>Why use a robot?</strong></p>
+<p>To minimize human error. This method is typically effective for eliminating very small, early-stage tumors (Laser Ablation). The robot was supposed to irradiate the area around each malignant cell with a margin of error between 1 to 7 nanometers.</p>
+<p>However, the programming encountered some flaws and failed to accurately identify malignant cells based on color spectrum analysis. As a result, instead of targeting the cancerous cells, the laser mistakenly hit surrounding healthy cells, causing unintended burns. This was a small but clear example of <strong>“Small Errors, Big Consequences.”</strong></p>
+<p>Some Codes that showing the plot in 2D and 3D :</p>
+<p>2D Visualization (PCA on Breast Cancer Dataset) :</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Small-Errors-Big-Consequences-Final-Pdf_files/figure-html/unnamed-chunk-7-1.svg" class="img-fluid figure-img" width="624"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>3D Visualization (PCA on Breast Cancer Dataset) :</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>  Cl.thickness Cell.size Cell.shape Marg.adhesion Epith.c.size Bare.nuclei
+1            5         1          1             1            2           1
+2            5         4          4             5            7          10
+3            3         1          1             1            2           2
+4            6         8          8             1            3           4
+5            4         1          1             3            2           1
+6            8        10         10             8            7          10</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-53f14fe55b5b9d73ac25" style="width:100%;height:650px;"></div>
+<script type="application/json" data-for="htmlwidget-53f14fe55b5b9d73ac25">{"x":{"visdat":{"7c8046f0146":["function () ","plotlyVisDat"]},"cur_data":"7c8046f0146","attrs":{"7c8046f0146":{"x":{},"y":{},"z":{},"mode":"markers","marker":{"size":6},"color":{},"colors":["red","yellow"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter3d"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"3D PCA of Breast Cancer Data","scene":{"xaxis":{"title":"PC1"},"yaxis":{"title":"PC2"},"zaxis":{"title":"PC3"}},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[1.4690945862429361,-1.4409903522579492,1.5913114677620297,-1.4787279609844242,1.3438768012657989,1.0698498315914904,1.6640092664569248,1.5411810835467641,1.593085646251619,2.0486830615829383,1.9314898732626067,1.7135283492811235,1.717318917787851,1.5761800639803139,1.3620091085055583,1.8244043955252287,1.8974364971924473,1.8514176883794882,1.6102334400504732,1.9314898732626067,1.927030698811232,1.9756509599157202,1.7903510194550696,1.6741993880978121,1.6980626425270842,1.9314898732626067,0.82446698612967018,1.9057134401191396,2.0385753509999844,1.3438768012657989,1.9466212770443225,2.0385753509999844,1.5761800639803139,1.7875026452771356,1.3575499340541839,0.60564554962097739,1.4280679645157921,1.6595500920055504,1.2456152656207518,1.4993573938063678,1.7802433088721152,1.1264671440810368,1.6011672864305935,1.3448613147067041,1.0267560525318822,1.5761800639803139,1.6640916775148575,1.8974364971924473,1.8493916179755081,1.5761800639803139,2.0385753509999844,1.7903510194550696,1.8974364971924473,1.9564770957128861,1.4690945862429361,1.4498383109821691,1.8187076471693611,0.80585692648052198,1.1245490977357595,1.8118979089848737,0.44480017809107625,1.6933129281152146,1.4670781962257977,1.6549431128370451,1.35999271848842,2.0385753509999844,1.6832655417176916,0.96974168968358976,1.3575499340541839,1.7903510194550696,1.714470543609917,1.6731578311347373,1.1572728084566508,1.717318917787851,1.9655432493327656,1.5909771647897062,1.9655432493327656,2.0726287270701436,1.8118979089848737,1.9314898732626067,1.7953747126538311,-0.50833177836202814,2.0486830615829383,1.674549623684064,2.1797142048075213,1.7880003264656079,1.7903510194550696,1.4662462120650022,1.6832655417176916,1.233729524644362,1.3742921381093403,1.6832655417176916,2.2148091378407551,1.9655432493327656,1.8974364971924473,2.0385753509999844,1.7903510194550696,1.5761800639803139,2.0486830615829383,2.1797142048075213,1.3620091085055583,1.9415975838455608,1.5205197196599261,1.6102334400504732,1.8974364971924473,1.6832655417176916,1.5761800639803139,-2.3896653080344854,1.1206396921711639,2.1797142048075213,1.8244043955252287,1.8974364971924473,1.4690945862429361,1.8974364971924473,2.0486830615829383,2.0486830615829383,1.6203411506334275,1.8974364971924473,2.0385753509999844,1.8974364971924473,1.1093256025092693,1.7812848658351899,2.0385753509999844,2.0486830615829383,-0.60112681131178258,0.60754142168003311,0.81342489355338354,1.6022088433936681,1.7903510194550696,1.2473424937547259,1.8974364971924473,1.2609888809300167,1.0265108044037552,1.9291391802731448,-1.2880399254066097,1.9655432493327656,1.8244043955252287,1.6832655417176916,-1.4615753275703656,0.98013547533319056,1.8974364971924473,1.4690945862429361,1.5733316898023799,1.8244043955252287,2.0385753509999844,1.8974364971924473,1.6832655417176916,1.6741993880978121,1.6731578311347373,2.1797142048075213,1.8974364971924473,-0.8617518684415143,0.8521428959381705,1.8974364971924473,1.8974364971924473,1.8974364971924473,1.8974364971924473,1.0331715382799702,1.7802433088721152,2.1797142048075213,2.1797142048075213,2.1898219153904757,1.4436968040209728,-1.2812255761399727,1.6832655417176916,1.8974364971924473,1.3539616671602288,2.0385753509999844,1.3362326753620912,1.1335729322435273,2.1797142048075213,1.8974364971924473,2.1898219153904757,1.8974364971924473,2.0726287270701436,2.1797142048075213,2.1797142048075213,1.013531369745261,2.1110930653673892,1.5190690311434949,1.7903510194550696,-1.058053630845974,2.0385753509999844,1.4561385014820478,1.0874280942985455,0.6655340649161402,1.7903510194550696,1.9314898732626067,1.927030698811232,1.9371384093941866,1.191264057326751,1.927030698811232,1.5909771647897062,1.4940818086932157,1.6980626425270842,2.1797142048075213,2.0385753509999844,2.1898219153904757,1.2147690851476531,0.53910965539505573,2.1797142048075213,1.2066050339107459,2.0726287270701436,2.0726287270701436,0.94767908383740695,0.70054634142643435,1.821556021347295,1.2570989497890079,1.922423719642727,1.8244043955252287,2.3309607691980125,1.6616585734674632,1.8244043955252287,1.6832655417176916,1.8584577715953878,1.590237272073685,1.802797427275,1.9655432493327656,1.1090833909817202,1.6896810274657799,1.7132438186414627,2.0385753509999844,1.4667438932534744,2.0385753509999844,1.2074370180715419,1.6980626425270842,2.0385753509999844,1.3427528332447913,-0.047191031102266162,2.0385753509999844,0.76761809359948363,1.3704224908262053,1.0164791065574765,0.85516231108093743,1.3575499340541839,1.9655432493327656,0.87119698579482341,2.0385753509999844,1.9314898732626067,1.680174956012209,0.82436434283212667,1.5002995881351615,1.4826649620838741,-2.20300502378615,1.8584577715953878,1.3734710028845836,1.7513722938580101,0.8764801533848755,1.7635027941816825,2.0877601308518594,0.87822871887369447,2.0726287270701436,2.1797142048075213,1.7513722938580101,2.3309607691980125,1.6362622194638274,1.7513722938580101,1.7332399866182506,1.6729156196071882,1.6250305408598653,1.4986887878617208,1.5190690311434949,1.5977269535101177,1.4119835534061171,1.7485239196800761,1.8584577715953878,1.8584577715953878,1.9122335980018397,1.9756509599157202,1.4119835534061171,1.7955333805111238,1.8584577715953878,1.7513722938580101,1.9655432493327656,1.7321160185972431,1.8584577715953878,1.6271390223217781,1.9026188582485015,1.0281091037156294,1.6250305408598653,1.914749358572174,1.9756509599157202,2.1797142048075213,1.8685654821783424,-0.23178241976661906,1.9756509599157202,2.3309607691980125,1.7342245000591558,1.717318917787851,1.717318917787851,1.3620091085055583,1.717318917787851,1.6011672864305935,1.5761800639803139,2.1797142048075213,1.7170767062603018,1.9038519829405356,1.7513722938580101,2.0726287270701436,2.1797142048075213,1.6102334400504732,1.7513722938580101,1.9756509599157202,2.3309607691980125,2.1898219153904757,1.7230498649773636,2.0284676404170296,1.7072112072048964,1.8244043955252287,1.8493916179755081,1.8584577715953878,1.5761800639803139,1.2754516787670855,1.8685654821783424,1.4667438932534744,2.0486830615829383,1.8244043955252287,1.9314898732626067,1.5286013598389006,1.4690945862429361,1.3427528332447913,1.717318917787851,1.5031479623130954,1.5182793660948113,1.9655432493327656,1.5029057507855463,1.717318917787851,1.5626547359090599,1.6102334400504732,2.2238752914606348,2.116789813723257,1.8244043955252287,1.8974364971924473,1.065466180103209,0.71759914347751819,1.9655432493327656,0.41703770369313087,1.3947533485493304,1.5190690311434949,1.9314898732626067,1.6102334400504732,1.4690945862429361,1.4690945862429361,1.8974364971924473,1.8244043955252287,1.4662462120650022,1.5569237887195471,1.5334107698765271,1.8244043955252287,2.0385753509999844,1.3427528332447913,1.6102334400504732,2.0385753509999844,2.0385753509999844,1.8974364971924473,1.4838916870523284,1.9655432493327656,1.0193675726812315,2.1797142048075213,1.5002995881351615,1.7513722938580101,1.6250305408598653,1.6102334400504732,1.5909771647897062,1.216411080246647,1.8244043955252287,1.3993603277178357,1.8244043955252287,2.1898219153904757,1.717318917787851,1.7423061402381304,2.1797142048075213,1.7513722938580101,1.6830233301901427,2.0827364376530979,1.4646354117915616,1.8244043955252287,1.717318917787851,1.6102334400504732,1.8244043955252287,-0.03806140304647368,1.037417468863058,2.1797142048075213,1.6453283730837072,1.2857509570789991,1.7048124312474959,2.0726287270701436,1.8584577715953878,1.2673700385881113,1.6102334400504732,2.1797142048075213,1.9655432493327656,1.5865179903383317,0.88980305058700837,1.8584577715953878,1.5190690311434949,1.6261545088808729,1.8244043955252287,1.8244043955252287,2.1797142048075213,2.0726287270701436,1.8244043955252287,1.9291391802731448,1.9474109420930064,1.8244043955252287,1.4222828317180309,1.6820388167492375,1.5002995881351615,1.717318917787851,1.6832655417176916,1.8244043955252287,1.6102334400504732,-0.86612088627784534,2.1797142048075213,2.0385753509999844,1.5761800639803139,1.7858918450036951,1.7858918450036951,1.5921011328107137,2.1797142048075213,1.2517837270855312,1.6832655417176916,1.4428806388242021,1.7903510194550696,1.2253174333969103,2.0385753509999844,1.4794325126009538,1.9122335980018397,1.7513722938580101,2.1797142048075213,2.0726287270701436,1.3591607343276244,2.1797142048075213,2.1797142048075213,2.1797142048075213,2.1797142048075213,1.6045366916946053,1.8584577715953878,1.2496808286416075,1.9474109420930064,1.9655432493327656,1.6915424846443838,1.7223426109866122,2.0726287270701436],"y":[-0.10419678643418051,-0.56972389523615874,-0.076064124977009234,-0.52806480717284487,-0.090652610608175116,-0.54982389908781848,0.017971451863243781,2.3223013822157377,0.023606741527595898,0.021513129354991056,0.13865467029037692,-0.047931463519838013,0.038823089466351379,-0.054280996022167682,-0.15411257684619331,0.088738879878364152,0.095466375213870691,-0.00043071391927096414,-0.011092700945661449,0.13865467029037692,0.22651628031368048,0.014785634019484517,0.045550584801857918,0.027364777508854132,0.061159746939750015,0.13865467029037692,-0.61569851259790453,0.71120611731160011,0.18857046070238964,-0.090652610608175116,0.11687154133553534,0.18857046070238964,-0.054280996022167682,0.10659298322330718,-0.066250966822889695,-0.36960012777851198,-0.085789154570680315,0.1058330618865474,-0.059711204116176142,-0.14776304434386361,0.21260791614925639,-0.44361448388846753,0.020637282173347593,-0.11941313437293602,-0.44848046693108545,-0.054280996022167682,0.19442210885625272,0.095466375213870691,0.16365715807387948,-0.054280996022167682,0.18857046070238964,0.045550584801857918,0.095466375213870691,0.2135729484858922,-0.10419678643418051,-0.081860128960781847,0.21082367672126273,0.33382965432754708,-0.20577487315998871,-0.0051211312765085948,-0.40010743078237593,0.28618319917495921,-0.091280472915764771,0.049701434982252879,-0.14119626332777754,0.18857046070238964,-0.0043652056101549097,0.87330051306194556,-0.066250966822889695,0.045550584801857918,0.099865487887800641,0.16269212573724368,-0.15364248978216177,0.038823089466351379,0.18184296536688316,0.011243956527737242,0.18184296536688316,0.23175875577889599,-0.0051211312765085948,0.13865467029037692,0.19082478719441492,0.2946607400461328,0.021513129354991056,-0.011470663778838319,0.28167454619090876,0.14577497982502008,0.045550584801857918,-0.043154388012731193,-0.0043652056101549097,3.18195159396058,-0.11485330737958555,-0.0043652056101549097,0.18953549303902545,0.18184296536688316,0.095466375213870691,0.18857046070238964,0.045550584801857918,-0.054280996022167682,0.021513129354991056,0.28167454619090876,-0.15411257684619331,-0.028402661057021716,0.025091761397886936,-0.011092700945661449,0.095466375213870691,-0.0043652056101549097,-0.054280996022167682,-0.50925528323651936,-0.15875420831319162,0.28167454619090876,0.088738879878364152,0.095466375213870691,-0.10419678643418051,0.095466375213870691,0.021513129354991056,0.021513129354991056,-0.17815003229306012,0.095466375213870691,0.18857046070238964,0.095466375213870691,-0.20927084272342153,0.077280567920867016,0.18857046070238964,0.021513129354991056,-0.4707581043763297,0.067209251479782239,-0.15206828475687839,-0.11469006605504192,0.045550584801857918,-0.37753747323058484,0.095466375213870691,-0.19408151309403857,0.0013520440250149313,0.23887906531353914,0.20599394904041035,0.18184296536688316,0.088738879878364152,-0.0043652056101549097,-0.60762254566143015,-0.17580757724058638,0.095466375213870691,-0.10419678643418051,0.0067614023992815797,0.088738879878364152,0.18857046070238964,0.095466375213870691,-0.0043652056101549097,0.027364777508854132,0.16269212573724368,0.28167454619090876,0.095466375213870691,-0.41897211889509922,0.13890740294470261,0.095466375213870691,0.095466375213870691,0.095466375213870691,0.095466375213870691,-0.47736905405461039,0.21260791614925639,0.28167454619090876,0.28167454619090876,0.11461721484351006,0.31732611279050943,-0.57837068050038964,-0.0043652056101549097,0.095466375213870691,0.068196615019867568,0.18857046070238964,0.41843887017502995,-0.060947381106598308,0.28167454619090876,0.095466375213870691,0.11461721484351006,0.095466375213870691,0.23175875577889599,0.28167454619090876,0.28167454619090876,0.11723655825023693,0.22997451635090221,0.045639769956850262,0.045550584801857918,-0.0078050506475323411,0.18857046070238964,0.12390294333466739,0.050452051985045099,-0.25114699919246991,0.045550584801857918,0.13865467029037692,0.22651628031368048,0.059458948966281899,0.054764506509105804,0.22651628031368048,0.011243956527737242,-0.02927850823866518,0.061159746939750015,0.28167454619090876,0.18857046070238964,0.11461721484351006,0.11926131186766914,-0.069460389409774642,0.28167454619090876,-0.054219885771091714,0.23175875577889599,0.23175875577889599,1.2359964963444914,-0.13402030962304382,0.14978127829981341,0.0022882335558002675,0.17038465340938602,0.088738879878364152,0.20772130033202912,0.11819584688640594,0.088738879878364152,-0.0043652056101549097,0.13192717495487039,0.08464913994904516,0.211299932374925,0.18184296536688316,-0.096683662700400713,-0.033253792733679788,0.24121319167558236,0.18857046070238964,-0.003972391411018239,0.18857046070238964,-0.10234597067412529,0.061159746939750015,0.18857046070238964,-0.13177591937279462,-0.17824423172838147,0.18857046070238964,0.29688527064723885,0.42318579747802382,-0.22693013980724061,-0.11761874175803388,-0.066250966822889695,0.18184296536688316,-0.086316976027724007,0.18857046070238964,0.13865467029037692,0.16926437283431522,0.018464698707007843,3.3907063775040491e-05,0.10267586990350619,-0.87607156263036079,0.13192717495487039,0.040397294491634761,0.082011384542857613,-0.23043827631408614,0.10190509287119276,0.20997562682405441,-0.028068491551800356,0.23175875577889599,0.28167454619090876,0.082011384542857613,0.20772130033202912,-0.071501770978535634,0.082011384542857613,0.14547135078087581,0.27527930576026455,0.054432251604243476,0.026853118665629339,0.045639769956850262,-0.10495271210053417,-0.0042760204551625658,0.14305378296430687,0.13192717495487039,0.13192717495487039,0.16099132776377556,0.014785634019484517,-0.0042760204551625658,-0.041857651728034795,0.13192717495487039,0.082011384542857613,0.18184296536688316,0.10434804201625625,0.13192717495487039,0.066795036604102132,0.0080581386839780333,-0.030557866152278568,0.054432251604243476,0.027951847012313125,0.014785634019484517,0.28167454619090876,-0.035130156392528256,-0.34123328527096702,0.014785634019484517,0.20772130033202912,0.1167108270161149,0.038823089466351379,0.038823089466351379,-0.15411257684619331,0.038823089466351379,0.020637282173347593,-0.054280996022167682,0.28167454619090876,0.1514102694893722,0.066577788090345758,0.082011384542857613,0.23175875577889599,0.28167454619090876,-0.011092700945661449,0.082011384542857613,0.014785634019484517,0.20772130033202912,0.11461721484351006,0.13607802513526535,0.35562779204978828,0.20588042081374996,0.088738879878364152,0.16365715807387948,0.13192717495487039,-0.054280996022167682,-0.041248479039387109,-0.035130156392528256,-0.003972391411018239,0.021513129354991056,0.088738879878364152,0.13865467029037692,0.022122302043638742,-0.10419678643418051,-0.13177591937279462,0.038823089466351379,-0.061008491357674277,-0.082791620312515829,0.18184296536688316,0.05157868866534665,0.038823089466351379,0.065310597120144975,-0.011092700945661449,0.15780550992001641,0.10788971950800363,0.088738879878364152,0.095466375213870691,-0.14732397125961078,0.20143489185326383,0.18184296536688316,-0.099931521322142031,-0.14602723497491438,0.045639769956850262,0.13865467029037692,-0.011092700945661449,-0.10419678643418051,-0.10419678643418051,0.095466375213870691,0.088738879878364152,-0.043154388012731193,-0.031944338548769047,-0.10457474926735738,0.088738879878364152,0.18857046070238964,-0.13177591937279462,-0.011092700945661449,0.18857046070238964,0.18857046070238964,0.095466375213870691,-0.03867183388427553,0.18184296536688316,0.065035593936718761,0.28167454619090876,3.3907063775040491e-05,0.082011384542857613,0.054432251604243476,-0.011092700945661449,0.011243956527737242,-0.15935505231140876,0.088738879878364152,-0.089895608070619887,0.088738879878364152,0.11461721484351006,0.038823089466351379,0.11374136766186671,0.28167454619090876,0.082011384542857613,0.10822197441286596,0.06470142443149729,-0.016335176410876895,0.088738879878364152,0.038823089466351379,-0.011092700945661449,0.088738879878364152,-0.55313308316047172,-0.17487502929430856,0.28167454619090876,-0.10323175409754479,-0.014458812752028483,-0.055036921688521367,0.23175875577889599,0.13192717495487039,-0.038279019685138915,-0.011092700945661449,0.28167454619090876,0.18184296536688316,0.099105566551040858,-0.1672011912411083,0.13192717495487039,0.045639769956850262,0.095555560368863035,0.088738879878364152,0.088738879878364152,0.28167454619090876,0.23175875577889599,0.088738879878364152,0.23887906531353914,0.24530293160490141,0.088738879878364152,0.022513645832196061,0.13698249817762675,3.3907063775040491e-05,0.038823089466351379,-0.0043652056101549097,0.088738879878364152,-0.011092700945661449,0.23919015319555686,0.28167454619090876,0.18857046070238964,-0.054280996022167682,0.13341219482516142,0.13341219482516142,0.052367265292356691,0.28167454619090876,0.54366575298169484,-0.0043652056101549097,-0.037767360841914122,0.045550584801857918,0.097952801585612148,0.18857046070238964,0.04918977613902803,0.16099132776377556,0.082011384542857613,0.28167454619090876,0.23175875577889599,-0.093070178424743993,0.28167454619090876,0.28167454619090876,0.28167454619090876,0.28167454619090876,0.11099209589723719,0.13192717495487039,3.9401241424553821,0.24530293160490141,0.18184296536688316,0.61137453648757467,0.18409729185890844,0.23175875577889599],"z":[0.56527101900834853,-0.23642766631811671,-0.048821924765874963,0.60260642065039316,-0.029975332823017484,-0.66158651085363196,-0.34494007355892708,0.0036265291621264684,0.33860385199419973,-0.6238255932067136,-0.2691741723905432,-0.66291486854009873,0.34510853676746123,0.25812966442934626,0.87241237358735069,0.037967182188459014,-0.66329439930766065,0.070931303516144503,0.6522498913464635,-0.2691741723905432,-0.46691071229196868,0.077435988289405996,-0.35615304472865816,-0.50020554335484002,0.049180153358190037,-0.2691741723905432,0.55746100556257638,-0.52986006966590704,-0.5763155269695458,-0.029975332823017484,-0.57612576158576478,-0.5763155269695458,0.25812966442934626,-0.70727180726810079,0.67467583368592565,-1.1898232224538032,-0.78284794305270367,-0.54267661346035256,0.49518802317375854,-0.048632159382094003,-0.30864297849149025,-0.65989144158370139,0.20105603814127931,0.55876633423508704,-0.39673741411833474,0.25812966442934626,-0.45269547711767211,-0.66329439930766065,-0.019106444099607964,0.25812966442934626,-0.5763155269695458,-0.35615304472865816,-0.66329439930766065,-0.3262477986786102,0.56527101900834853,0.26934263559907734,-0.66427034289042597,-1.035623605390056,-0.050428557758885967,-0.48857759309630699,1.4523240129616348,-0.56789473606576291,-0.055326609539136457,-0.79613392676411143,0.25181474503986567,-0.5763155269695458,-0.049011690149655923,-0.8050871034390068,0.67467583368592565,-0.35615304472865816,-0.006010225771981053,-0.0015016239124880128,0.47750596847124938,0.34510853676746123,0.12494605452657398,0.35632150793719231,0.12494605452657398,-0.18219530005242826,-0.48857759309630699,-0.2691741723905432,-0.61559456768671172,-1.0557291244070122,-0.6238255932067136,0.43246693987313811,-0.48933665463143083,-0.57160724057307621,-0.35615304472865816,0.2141522564689062,-0.049011690149655923,-0.31480807256727161,0.21434202185268716,-0.049011690149655923,-0.59392034715666564,0.12494605452657398,-0.66329439930766065,-0.5763155269695458,-0.35615304472865816,0.25812966442934626,-0.6238255932067136,-0.48933665463143083,0.87241237358735069,-0.31668423862771111,-0.64737314174145999,0.6522498913464635,-0.66329439930766065,-0.049011690149655923,0.25812966442934626,0.23750903975892626,0.1331135231298029,-0.48933665463143083,0.037967182188459014,-0.66329439930766065,0.56527101900834853,-0.66329439930766065,-0.6238255932067136,-0.6238255932067136,0.60473982510929547,-0.66329439930766065,-0.5763155269695458,-0.66329439930766065,0.89483831592681284,-0.80734689793384251,-0.5763155269695458,-0.6238255932067136,1.0207383926619198,-0.31016393442959533,0.29880578589646267,-0.29764788130107267,-0.35615304472865816,-0.83649308244876674,-0.66329439930766065,0.42140828576594747,0.038242624627145838,-0.48462836823496125,0.184859316994161,0.12494605452657398,0.037967182188459014,-0.049011690149655923,0.34451045288947141,0.55493252455710163,-0.66329439930766065,0.56527101900834853,-0.09298909811009598,0.037967182188459014,-0.5763155269695458,-0.66329439930766065,-0.049011690149655923,-0.50020554335484002,-0.0015016239124880128,-0.48933665463143083,-0.66329439930766065,-0.13122630504887059,1.5357417243454823,-0.66329439930766065,-0.66329439930766065,-0.66329439930766065,-0.66329439930766065,-0.22221037329076199,-0.30864297849149025,-0.48933665463143083,-0.48933665463143083,-0.53684672086859875,-0.7817008176105017,-0.75288944040179484,-0.049011690149655923,-0.66329439930766065,-0.045279347335951611,-0.5763155269695458,0.61172647631198729,0.46892827115631103,-0.48933665463143083,-0.66329439930766065,-0.53684672086859875,-0.66329439930766065,-0.18219530005242826,-0.48933665463143083,-0.48933665463143083,0.47246092943303886,-0.53782266445136395,0.45112376643221463,-0.35615304472865816,-0.81560926892036845,-0.5763155269695458,0.26166232270607409,-0.035882612849403556,0.21556042809824996,-0.35615304472865816,-0.2691741723905432,-0.46691071229196868,-0.51442077852913659,0.30384333228972221,-0.46691071229196868,0.35632150793719231,0.50819739272028153,0.049180153358190037,-0.48933665463143083,-0.5763155269695458,-0.53684672086859875,-0.47763652775147375,0.50696295076912468,-0.48933665463143083,-0.23233331033980834,-0.18219530005242826,-0.18219530005242826,-0.011438141930509557,0.39116628707415868,-0.31315158035098328,0.56899344266885721,-0.72036802559572766,0.037967182188459014,-0.44986784853048378,-0.56039426940334514,0.037967182188459014,-0.049011690149655923,0.43208740910557619,-0.012514910545242546,-0.47341539706523017,0.12494605452657398,0.66166646413940255,0.12551535067791686,-0.82792374461749596,-0.5763155269695458,0.34981682316393081,-0.5763155269695458,-0.50181217634785091,0.049180153358190037,-0.5763155269695458,0.57648399017807961,-0.98606948883250256,-0.5763155269695458,0.42859462150561572,-0.31361108790179237,-0.33202887023798822,0.17959142130140526,0.67467583368592565,0.12494605452657398,0.78228424998671064,-0.5763155269695458,-0.2691741723905432,-0.63330230447650893,0.15425100159365068,0.60827248338602335,-0.15845065632932023,0.063408386999988353,0.43208740910557619,0.16640835419267455,0.73922876368457846,0.3123488503538453,-0.77706212111623252,-0.48914688924764982,-0.10748140788539293,-0.18219530005242826,-0.48933665463143083,0.73922876368457846,-0.44986784853048378,0.096472345616044439,0.73922876368457846,-0.16315894272578971,-0.23467347569989827,0.75044173485430954,0.76165470602404062,0.45112376643221463,0.12570511606169782,0.7582651210112169,0.38811000114513611,0.43208740910557619,0.43208740910557619,-0.56510255579981472,0.077435988289405996,0.7582651210112169,1.0858389243645277,0.43208740910557619,0.73922876368457846,0.12494605452657398,0.44330038027530727,0.43208740910557619,0.73272407891131697,0.77869756978552529,0.30527486942924087,0.75044173485430954,-0.73759331501528558,0.077435988289405996,-0.48933665463143083,0.38457734286840817,-0.71118817578621263,0.077435988289405996,-0.44986784853048378,0.4255827243323147,0.34510853676746123,0.34510853676746123,0.87241237358735069,0.34510853676746123,0.20105603814127931,0.25812966442934626,-0.48933665463143083,0.11193668498005099,-0.4887673584800879,0.73922876368457846,-0.18219530005242826,-0.48933665463143083,0.6522498913464635,0.73922876368457846,0.077435988289405996,-0.44986784853048378,-0.53684672086859875,-0.0078934729298768859,-0.52880546073237777,0.39261860300462914,0.037967182188459014,-0.019106444099607964,0.43208740910557619,0.25812966442934626,0.9247435619768607,0.38457734286840817,0.34981682316393081,-0.6238255932067136,0.037967182188459014,-0.2691741723905432,-0.78492095559438035,0.56527101900834853,0.57648399017807961,0.34510853676746123,0.95939124592546554,0.6524396567302444,0.12494605452657398,0.72621939413805536,0.34510853676746123,-0.39080072867726301,0.6522498913464635,-0.14272649395148121,0.16441486062752095,0.037967182188459014,-0.66329439930766065,-0.31931218267792333,0.38402197245617026,0.12494605452657398,-0.14970043317837223,0.55237448521769816,0.45112376643221463,-0.2691741723905432,0.6522498913464635,0.56527101900834853,0.56527101900834853,-0.66329439930766065,0.037967182188459014,0.2141522564689062,-0.0377987189799249,0.34548806753502315,0.037967182188459014,-0.5763155269695458,0.57648399017807961,0.6522498913464635,-0.5763155269695458,-0.5763155269695458,-0.66329439930766065,0.66346286251619457,0.12494605452657398,-0.020502535547277965,-0.48933665463143083,0.60827248338602335,0.73922876368457846,0.75044173485430954,0.6522498913464635,0.35632150793719231,0.58769696134781069,0.037967182188459014,0.80583179852145703,0.037967182188459014,-0.53684672086859875,0.34510853676746123,0.28803491047939422,-0.48933665463143083,0.73922876368457846,-0.28218354193706618,-0.22970536628959615,0.36753447910692338,0.037967182188459014,0.34510853676746123,0.6522498913464635,0.037967182188459014,0.29350829139641521,0.98964057442183506,-0.48933665463143083,0.54766619882122858,0.10847248691643194,-0.18143623851730442,-0.18219530005242826,0.43208740910557619,1.0622913758297812,0.6522498913464635,-0.48933665463143083,0.12494605452657398,0.15858496803576713,0.084327533634810145,0.43208740910557619,0.45112376643221463,0.14398241185321239,0.037967182188459014,0.037967182188459014,-0.48933665463143083,-0.18219530005242826,0.037967182188459014,-0.48462836823496125,-0.77744165188379433,0.037967182188459014,-0.058005954049212077,-0.87092520899517079,0.60827248338602335,0.34510853676746123,-0.049011690149655923,0.037967182188459014,0.6522498913464635,0.13390897295960574,-0.48933665463143083,-0.5763155269695458,0.25812966442934626,-0.55388958463008364,-0.55388958463008364,-0.25013781506390464,-0.48933665463143083,0.64634000875850484,-0.049011690149655923,-0.19956887354909936,-0.35615304472865816,0.69796355920683939,-0.5763155269695458,0.46572632261476932,-0.56510255579981472,0.73922876368457846,-0.48933665463143083,-0.18219530005242826,0.52129361104790839,-0.48933665463143083,-0.48933665463143083,-0.48933665463143083,-0.48933665463143083,-0.049987633732421141,0.43208740910557619,-0.16414845350596002,-0.77744165188379433,0.12494605452657398,0.08442263949209769,0.085667013809407916,-0.18219530005242826],"mode":"markers","marker":{"color":"rgba(255,255,0,1)","size":6,"line":{"color":"rgba(255,255,0,1)"}},"type":"scatter3d","name":"benign","textfont":{"color":"rgba(255,255,0,1)"},"error_y":{"color":"rgba(255,255,0,1)"},"error_x":{"color":"rgba(255,255,0,1)"},"line":{"color":"rgba(255,255,0,1)"},"frame":null},{"x":[-5.0106542091698927,0.080792716994872268,-3.7607574319110917,-1.0639326581031363,-2.5546216655068203,-2.4572407022937202,-3.0116069470598643,-0.35767078867188756,-3.2374626872680956,-4.3247207846762876,-1.8713771710108427,-1.3525703595879941,-1.0228847153154557,-3.7945307364274536,-1.4481694553410203,-4.2725412399435516,-2.1174410372013366,-2.3374819400902105,-0.91478961946568071,0.013825865489489858,-1.8451280340037239,-3.7815125485547774,-2.7651043766304757,-1.7714898720105392,-2.5978248172698799,-0.81982506667488098,-0.62267282206758179,-0.45193083577207416,-1.2150437275982937,-3.2879412821601508,-0.69064727601096942,-1.3653387639627106,-1.9140729368978981,-3.7706481046955584,-4.5272696734640014,-3.2259275739008086,-0.86929087905402458,-4.379023007658172,-4.0928490785377374,-1.1137232808318474,-2.8903714431043923,-4.3111313820749499,-4.0430212245503947,-2.5202217465742245,0.14799147364004192,-0.58252844520515568,-5.9821098292033703,-0.96328309487268537,-3.1032949621626367,-3.3304336847418918,-2.3490994871403821,-1.274029011176075,-2.4905811401514408,-4.1131565878191054,-3.5358887098117577,-4.2430880685428738,-1.5219504322117094,-3.5377731122429292,-2.8574210103132955,-1.6360301177207728,-4.129220944067634,-1.6070421209193337,-0.70075654529997566,-4.9971231844307482,-1.558710908048107,-4.0149910349224598,-1.0927968986723058,-4.9733350967293477,-3.2743069324822049,-3.7133782498712939,-3.9191496178857634,-6.4481449556386865,-1.7293999021287667,-3.8349386204749325,-3.4632694802384849,-0.69693164870325441,-3.713410742408263,-1.9900826372460978,-2.7160253100548406,-5.0928279836074655,-3.7585842566645735,-4.9371943004736956,-4.8582764381072865,-3.8084465565133145,-3.9120663180189341,-5.2332743345787671,-2.9912540584060632,-5.7934365994460482,-3.8380451544757328,-5.9032380081325595,-4.8833471716894241,-3.4049638100449915,-3.9198599680382271,-4.1726246526419768,1.2684459236411796,-1.7953035361381926,-3.2051124287926811,-3.3850161793916391,-3.0645899556083962,-5.4276082567757715,-2.0414772788323243,-3.6969726061585848,-1.8314713670542249,-4.7780086726280739,-3.4039486070817451,-5.4461792016520576,-1.421708306724186,-4.5358172246891488,-0.55938721604824548,-2.4588784570707438,-3.7945307364274536,-3.2879412821601508,-1.5796812217447025,-3.0198576011594218,-5.4734868518303239,-3.6964024031895106,-3.0180085967016437,-3.3250823789740673,-2.5211459724857312,-0.73010828992620425,-3.6589491484947918,-1.9740781357615478,-0.73010828992620425,0.10468861014941416,-2.4064917574132627,-1.7353382672014273,-1.4004734590900263,-2.3984934179373947,-5.8010667118441264,-6.7307326051664926,-0.83266619694724109,-3.5585441327805483,-1.3051315484574131,-2.9258803315306672,-2.1534474664758099,-2.9588593971061461,-6.6544477081268401,-1.6075676337162264,-3.1815160505260622,-3.3137361865403054,-2.5474260686452856,-1.2916900596624192,-3.9125655893495126,-2.5750707484192645,-1.5494041949802935,-0.50599873140591922,-2.2093495748155876,-2.2650780501177232,-1.3803298455110176,-1.6071585021628698,-1.9051786819719676,-1.9132337592606252,-1.5076616937748504,-1.5092941919203695,-4.1481809384012625,-0.78743161110285265,-1.1744929958680683,-4.1405039582869199,0.14719829928005479,-5.5562625318737036,-3.2875405165193441,-1.5770514891281671,-6.8669461094471291,-2.8463184537405328,-6.0247283942160754,-4.5724443845226279,-3.3836987285694935,-1.6223968354493217,-3.4653305758023061,-4.3534890132879722,-4.2310374649484945,-2.0488743804527236,-3.6586087204729782,-4.8716051130747697,-6.274723052346733,-2.2642349561203825,-2.3341524177873998,-2.5548923904149521,-2.8551325762989537,-4.2277723458988277,-3.3193294649655463,0.37273759997759015,-3.5426174790051674,-4.0795579778581175,-4.3420334175229591,-3.0718755851921249,-2.7326389196648448,-3.2312386542508289,-7.0107098804960284,-4.0641244214580894,-5.0365875411926444,-1.0272470252209689,0.41895317236993596,-2.3031158777892125,-4.2600321199093951,-4.9845981502687957,-3.8693665265275694,-3.4329254470582278,-2.2628280161657663,-1.5963405023909094,-2.5513081084104243,-2.1620718766765088,-4.62257067136904,-2.7015662782470815,-4.717448504836069,-1.4679183084698044,-4.2948314333403648,-3.2484356167583925,-3.9158579602806309,-2.6691584848958532,-3.2797561584078703,-3.2689648957844932,-5.5626513170473899,-2.5725188065860962,-2.1813832816955565,-2.2896952106536594,-1.2784032137388659,-1.852100074090635,-2.3459674779137583,-1.8386576680194358,-3.6298793395468243,-4.8569764741594152,-2.4133313613666956,-3.5225687606078373,-6.7584085149749935,-2.8471871243350733,-2.2343718451884729,-4.75487747136442,-6.3065057476795303,-3.1150576480145968,-2.0800004637604981,-3.9746581255293294,-2.9977210214352552,-6.422747173416723,-4.0591959001170315,-2.3919369941525845,-3.786485714301083,-2.2383665183225991,-2.6305345901916759],"y":[-1.5337930464993574,-0.42928146296884523,0.60314906255366108,-0.21716838368068181,-0.76932987168671907,0.56593562444248813,-0.96798667922448534,-0.60368929828311879,0.21623835463404517,-0.94693029737318168,-1.1539350926418634,-0.56913513009833738,-0.23619780888116881,-0.063920323900717113,0.21010187252360385,-0.71515396847397095,-0.75659820539292255,-0.2476674389291379,1.4824696027840998,-0.42606210414018425,-0.22346129476074728,2.4727049840284314,-1.0464760008375202,-0.68738090316957534,-0.83463197246644527,1.2850404560307249,-0.71025686209337302,-0.75113476922860622,-0.38009844951658212,-0.57703252865662868,-0.028108989254269967,4.208120451256149,-0.42302890168897211,2.3424547709762589,4.4831783788144239,-0.98819290957862194,0.4026595319823098,2.3756591439566712,4.7082459222737274,-0.56700794751129857,0.1111431296318478,4.5002086705057449,0.29461126588066533,0.43308045197154676,-0.27136209171165876,-0.544319968738469,2.9598340597313664,2.7057400709593002,-1.6046300772318052,-0.6583608827560693,-0.10116967104162344,-0.80086652812404202,-0.5532210529044882,-1.1510935771161173,2.4440207185955343,0.070531177146029078,-0.61047176817272453,-0.67475808924817504,0.83608206528810358,-0.10820447627281643,0.30146344002688014,0.30593196452839561,-0.47770012609486256,2.2071287335843874,0.24098356139071786,-1.2789759780856857,-0.9376447748514869,1.2812495796849244,-0.68534944867373204,0.47078601134426978,4.1273592567683197,1.6797098437925939,-1.3455491359058305,-0.65841369374624703,0.87719436056307487,-0.57563665364109773,-1.2490264262398645,-1.2212872854358015,-0.80169155143695758,3.3323778641398967,-1.1956386252958717,-1.344592039443206,0.32186417128638994,-0.30606537191311378,-1.2270862613880904,0.83394589302698729,-0.62025056417323743,1.0215910397597567,-1.3708885084880211,0.11749872292358887,-2.0700399188428644,-0.27578000180475026,-0.32767842309820028,-1.0611158398667095,-0.35829744844595302,-1.2061367459271732,-0.94799154818092435,-1.5085646957109951,-1.1875503593671854,-1.2874560292534163,-1.1427332028343082,-0.55879639811153581,-1.0990191654505514,3.8154023689831842,1.1228848770968716,3.7596778734509355,-0.68542518227250693,-1.4843647592306419,-0.93366873921828941,-0.4098083628048198,-0.063920323900717113,-0.57703252865662868,-0.77811074065077945,-0.48364121265802529,0.86049760983821344,-1.3536097012425019,-1.1370134765688493,0.75737567117645832,-0.78454239052536678,-1.1070536109320117,2.4470153927079785,-0.42475650687627686,-1.1070536109320117,-0.42087241023561428,2.7079749994741418,-0.79697211363044274,-1.3465656762634355,-0.56843457009238529,-0.54404418749658323,3.7544846566210479,-0.43422872736518903,0.77999022368581605,-1.1030241903856688,-1.1463514356638502,-0.70277293735804069,-0.96001576335797845,3.4557765761756221,-1.0616845231315382,0.57307766456824394,0.61783481450894462,0.059696837091910926,-0.78784592343135895,-1.1359894765997576,1.4972570482730201,-1.1898081203707591,-1.151894359744662,-0.28337966486936605,-1.3877247475617189,-1.3642900792687367,-0.94690518346211183,-0.5471938573869779,-0.91659910996231786,-1.2140104541230472,-1.4014402764575662,-0.012659231924451286,-0.052310960283785179,-0.94212133062616044,0.83065973849207797,0.8082921881735452,2.5064038335740504,0.74334998140806319,0.18445508690869761,3.5817314763150225,0.67207863941120671,1.9590221002581512,-0.31097759707709705,0.20004832082541246,-1.4720840024868267,-1.5350628998976219,2.4008188164656405,-1.022255381207724,-1.2659072662724991,-1.0259934464203573,-1.3561080370124041,-1.4579449753809484,-0.56634310970725887,-1.4660475699329074,-0.2721317414004778,-1.7673676948283357,-1.2582868348504896,-1.2872098118118571,-0.046221988619637222,-1.5007925851139672,-1.0711946748483336,0.076035372351619612,-1.5751875976325211,-0.73236463828666898,-1.3152361873624341,3.6042705309362182,-1.4929549826163013,0.37293757610047162,-0.36292137860332752,-0.44637200339252087,-1.4296550777902786,-0.71467583865231155,2.4007909108562018,-0.9734237069999544,-1.4129024393338265,-1.431012924326051,-1.1273042934877193,-1.2278004268854268,-1.056469599450317,-1.4726048228326305,-0.38559952749321313,-1.5823989992110286,-0.07156171703302272,-1.4679071425830352,-1.184150728395442,-1.1082519452513102,-0.90680205576853257,-1.2859765536206393,-1.1506760361860222,-1.7038421684044538,-0.68960371335455783,-0.96084739391515495,-1.0858857255406906,-1.2041301762909411,-1.2048628354105402,-0.63251660963445078,-0.65582457385976667,-0.22851641194374195,-1.358421285817826,-1.0393730276124478,-0.92388155716260489,2.9998787410784407,0.40988462220005978,-0.4901438660467845,0.079950097552359933,4.0190304506848324,-0.50006702632684374,0.79057515390223609,-0.95386957514145898,-1.053157001658773,1.2581869445679041,-0.23571598026290463,-0.7607127907123894,-0.14210463710428112,-1.0904875887796719,-1.1838305514767518],"z":[-0.46067165391172871,0.068051029097050658,-0.21028054089248821,0.45113812115389518,1.2912118783689261,-0.40193728434152221,0.93125714713935137,-0.069713666803511085,1.2181319393327523,0.19039602931042929,-0.96516100683609951,-1.3284125920299281,1.6744096130371855,0.19267011371167897,-0.45841346211752021,0.64369100365282272,-0.92515968484222588,0.71825061021085812,2.1194887287396602,0.011167168192764695,1.5249509483350498,-0.89582297836166358,0.81614847608665342,1.5383486361643732,1.1387304174480182,1.2288992965318115,0.25106719594855981,1.4948491049916044,-0.50096127967943838,1.4338341078505936,0.42300600094744029,2.2965630955098928,-0.088002521202270312,0.72512660075431479,-0.7365032213521322,-0.028286283963094769,2.1121272782434786,-1.7163942233176115,0.18293613099208964,-0.77410285656187861,-1.338298839277178,1.5454213866883877,-0.76393955368755118,1.4684877054229866,-0.85585269461305513,0.9972051573228693,0.11358141674018837,0.96369183677848458,1.0497138952042266,-2.5867266532120108,-0.15292206137401004,1.0828172799032836,0.47267037484862795,1.105930919407538,-1.2953763214370271,1.5162556645020235,0.10009602539198625,-1.3683272549583505,-0.10358707607185275,0.9702077343280664,-1.0733339067451007,1.2203107627132017,-0.4112520974721342,0.38521545886510955,0.83754156700225268,0.49179434999990868,-0.17391924618360094,0.8870084919854947,1.1890047494195874,-0.94633277341118227,1.1201131427114321,-1.3427065188206468,0.76816851301816291,-1.0291636919356044,-0.39411573899438435,0.13041525859916453,-1.1825943415239903,0.82038686565180041,-2.1918750549562933,0.48470326369122063,-1.7778433148199504,0.23472585137457094,-0.74592794776309579,0.56633120088137201,0.95284137875597885,-1.2588320601645056,1.4715398002381195,-0.4825151039872102,-0.19111296403968175,0.046897950699738136,-0.019620181979974453,0.020896464752543201,-0.92470845839404936,0.58227581826768382,0.097231407151168292,0.40350668602133838,0.70850823097906857,0.84613603482819366,0.29766169773146056,0.62353490619302432,0.18902726203348802,-0.57885762209959879,1.3464282255708448,1.7780567375723639,0.74948981650375002,0.38664751268555508,1.7066191603564653,-0.25175370499404476,1.414383249084131,0.65133640592132747,0.19267011371167897,1.4338341078505936,0.14764318881444871,0.73816961564692352,-1.0695767738623325,0.32625268788747463,0.31259545098938191,-0.61968988817602955,1.6441563389380229,-0.54689808064281475,1.5774131797751161,1.1913341314171564,-0.54689808064281475,1.0798336310318002,2.0530350539826654,-2.4279295071499152,1.877323921289149,-0.35125943907555723,-0.78231341499587703,0.46816089323307408,0.24690534893985208,-0.91913154741349568,1.3955721028331225,-1.0378524326331235,0.44223271180385176,0.16980729740145098,0.67885057819822192,0.22918890413077156,1.3232663926402668,-0.2008916582960717,-0.3003219958967327,0.14841944786023747,-1.0574705752817832,0.66113479144892673,-0.77992165098250377,1.7967957117998381,0.75342376360287555,1.2407570783524129,1.7450808066479016,-0.3706040846005505,1.1101068044204701,-0.3262839188392298,0.75609243402153925,1.5442997239956673,-0.7466127841907545,-1.5377205528196054,-0.90810205007832112,-2.08580480663771,0.54055441515429969,0.2400300040550733,0.55879163738342452,1.5793338801244707,-1.1083200144353946,-1.5723591071202574,-1.0817699018063018,-1.5527221124280719,0.7769971203331153,0.568782561997906,0.95306965894747098,-1.3343749968356227,0.5760423423540022,0.85410412641131861,0.24401232012272864,0.48612304770993231,-0.77895281110736636,0.73360301052941757,1.9446430766949605,1.7646141616828324,0.12133536217273033,-1.3792791799409398,-1.7602885704472531,2.3270481071986024,0.33345883099111562,-0.35154090608752797,0.45500894550670568,1.11749931972033,-0.27883298453391586,-1.6176526345428199,-0.36180252229352294,-0.08442065773228688,0.44164001341016962,-1.5153901873571127,0.74473759292283981,-0.2083919079245572,-1.235385018561288,-0.080075780531030372,-1.2113022045740225,-1.5865194000974738,-0.58961560105102406,1.2195780765447906,-0.42601492705864985,0.21558798565766721,-1.202627421224346,-0.39534855310277833,-1.7906601445988555,1.3021773037849975,-0.029469145659862236,0.3156576196139807,-0.23723831569303228,1.1375853595500771,-0.73362649327758267,-0.45145091160397688,-0.92821894128258053,0.42989988711584814,-0.98592141341531603,-1.6801887028367524,1.4206575513762691,-0.44458848348751778,-1.3161743153824832,-0.95003030398746502,1.2078463050008921,-1.6117215577794142,0.46819624259166098,-1.4178475375104573,-0.51011982554983237,-1.0098031241866865,0.36136708788096372,-0.0077359283291036501,-1.5909372367608747,0.011453840832008046,-0.2487946469149584,-1.2620814115708361,-1.6455692903240504,0.0042653177982032719,-1.0669904846780804,-0.26565404481435817,-0.66165947644385892,-1.0311344251319836,-1.1040852062149893],"mode":"markers","marker":{"color":"rgba(255,0,0,1)","size":6,"line":{"color":"rgba(255,0,0,1)"}},"type":"scatter3d","name":"malignant","textfont":{"color":"rgba(255,0,0,1)"},"error_y":{"color":"rgba(255,0,0,1)"},"error_x":{"color":"rgba(255,0,0,1)"},"line":{"color":"rgba(255,0,0,1)"},"frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+</section>
+<section id="affadative" class="level1">
+<h1>Affadative</h1>
+<p>I hereby affirm that this submitted paper was authored unaided and solely by me. Additionally, no other sources than those in the reference list were used. Parts of this paper, including tables and figures, that have been taken either verbatim or analogously from other works have in each case been properly cited with regard to their origin and authorship. This paper either in parts or in its entirety, be it in the same or similar form, has not been submitted to any other examination board and has not been published.</p>
+<p>I acknowledge that the university may use plagiarism detection software to check my thesis. I agree to cooperate with any investigation of suspected plagiarism and to provide any additional information or evidence requested by the university.</p>
+<p>Checklist:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The handout contains 3-5 pages of text.</label></li>
+<li><label><input type="checkbox">The submission contains the Quarto file of the handout.</label></li>
+<li><label><input type="checkbox">The submission contains the Quarto file of the presentation.</label></li>
+<li><label><input type="checkbox">The submission contains the HTML file of the handout.</label></li>
+<li><label><input type="checkbox">The submission contains the HTML file of the presentation.</label></li>
+<li><label><input type="checkbox">The submission contains the PDF file of the handout.</label></li>
+<li><label><input type="checkbox">The submission contains the PDF file of the presentation.</label></li>
+<li><label><input type="checkbox">The title page of the presentation and the handout contain personal details (name, email, matriculation number).</label></li>
+<li><label><input type="checkbox">The handout contains a abstract.</label></li>
+<li><label><input type="checkbox">The presentation and the handout contain a bibliography, created using BibTeX with APA citation style.</label></li>
+<li><label><input type="checkbox">Either the handout or the presentation contains R code that proof the expertise in coding.</label></li>
+<li><label><input type="checkbox">The handout includes an introduction to guide the reader and a conclusion summarizing the work and discussing potential further investigations and readings, respectively.</label></li>
+<li><label><input type="checkbox">All significant resources used in the report and R code development.</label></li>
+<li><label><input type="checkbox">The filled out Affidavit.</label></li>
+<li><label><input type="checkbox">A concise description of the successful use of Git and GitHub, as detailed here: <a href="https://github.com/hubchev/make_a_pull_request" class="uri">https://github.com/hubchev/make_a_pull_request</a>.</label></li>
+<li><label><input type="checkbox">The link to the presentation and the handout published on GitHub.</label></li>
+</ul>
+<p>[Alireza Toutounchi,] [06/18/2025,] [Koln]</p>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
